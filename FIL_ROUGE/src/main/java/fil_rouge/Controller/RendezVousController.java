@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/auth/RendezVous")
+@RequestMapping("/api/v1/auth/User/")
 @CrossOrigin(origins = "*")
 public class RendezVousController {
 
@@ -25,7 +25,7 @@ public class RendezVousController {
         return rendezVousService.CreateRendezVous(rendezVousModel);
     }
 
-    @GetMapping("/ShowAllRDV")
+    @GetMapping("ShowAllRDV")
     public List<RendezVousModel> getAllRDV(){
         return rendezVousService.getAllRDV();
     }
