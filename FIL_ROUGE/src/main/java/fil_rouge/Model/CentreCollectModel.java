@@ -21,6 +21,9 @@ public class CentreCollectModel {
     private Long id;
     private String nomCentre;
 
+
+
+
     @OneToMany(mappedBy = "centreCollecte")
     @JsonIgnore
     private List<SecretaireModel> secretaires;
