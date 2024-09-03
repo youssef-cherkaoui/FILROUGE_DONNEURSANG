@@ -10,19 +10,19 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/auth")
+@RequestMapping("/api/v1/auth/Admin/")
 public class AdresseController {
 
     @Autowired
     private AdresseService adressService;
 
-    @PostMapping("/CreateAdresse")
+    @PostMapping("CreateAdresse")
     public AdresseModel CreateAdresse(@RequestBody AdresseModel adress){
         return adressService.CreateAdresse(adress);
     }
 
 
-    @GetMapping("ShowAllAdress")
+    @GetMapping("/ShowAllAdress")
     public List<AdresseModel> getAllAdresse(){
         return adressService.getAllAdresses();
     }
