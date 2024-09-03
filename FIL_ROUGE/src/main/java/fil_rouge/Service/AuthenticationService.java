@@ -55,6 +55,7 @@ public class AuthenticationService {
         donneur.setEmail(request.getEmail());
         donneur.setTelephone(request.getTelephone());
         donneur.setGroupSanguin(request.getGroupSanguin());
+        donneur.setCentreCollecte(request.getCentreCollecte());
         donneur.setMotdepasse(passwordEncoder.encode(request.getPassword()));
         donneur.setRole(Role.valueOf("DONNEURSANG"));
 
