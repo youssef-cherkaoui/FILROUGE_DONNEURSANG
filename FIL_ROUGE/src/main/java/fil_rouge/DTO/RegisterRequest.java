@@ -18,6 +18,7 @@ public class RegisterRequest {
     private String email;
     private String motdepasse;
     private String telephone;
+    private String centreCollect;
     @Enumerated(EnumType.STRING)
     private GroupSanguin groupSanguin;
 }
