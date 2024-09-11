@@ -1,0 +1,129 @@
+<div class="container">
+  <h1 class="text-center mb-4" style="color: #b30000;">Page Admin - Gestion des Donneurs, Secrétaires, Centres de Collecte et Statistiques</h1>
+
+  <!-- Section Donneurs -->
+  <section id="donneurs" class="manage-section">
+    <h2>Gestion des Donneurs de Sang</h2>
+    <button class="btn btn-danger" (click)="showAddDonneurForm()">Ajouter un Donneur</button>
+    <input type="text" id="searchDonneur" class="form-control my-3" placeholder="Rechercher un donneur" (keyup)="searchDonneur($event)">
+    <div id="donneurs-list">
+      <!-- Liste des donneurs générée dynamiquement -->
+    </div>
+    <div *ngIf="showDonneurForm" class="form-container">
+      <h3>Ajouter un Donneur</h3>
+      <form [formGroup]="donneurForm" (ngSubmit)="addDonneur()">
+        <div class="mb-3">
+          <input type="text" formControlName="name" class="form-control" placeholder="Nom du donneur">
+        </div>
+        <div class="mb-3">
+          <input type="email" formControlName="email" class="form-control" placeholder="Email du donneur">
+        </div>
+        <div class="mb-3">
+          <input type="text" formControlName="telephone" class="form-control" placeholder="Téléphone">
+        </div>
+        <div class="mb-3">
+          <datalist id="bloodTypes">
+            <option value="A_POS">A+</option>
+            <option value="A_NEG">A-</option>
+            <option value="B_POS">B+</option>
+            <option value="B_NEG">B-</option>
+            <option value="AB_POS">AB+</option>
+            <option value="AB_NEG">AB-</option>
+            <option value="O_POS">O+</option>
+            <option value="O_NEG">O-</option>
+          </datalist>
+        </div>
+        <button type="submit" class="btn btn-danger">Ajouter</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Section Secrétaires -->
+  <section id="secretaire" class="manage-section">
+    <h2>Gestion des Secrétaires</h2>
+    <button class="btn btn-danger" (click)="showAddSecretaireForm()">Ajouter une Secrétaire</button>
+    <input type="text" id="searchSecretaire" class="form-control my-3" placeholder="Rechercher une secrétaire" (keyup)="searchSecretaire($event)">
+    <div id="secretaire-list">
+      <!-- Liste des secrétaires générée dynamiquement -->
+    </div>
+    <div *ngIf="showSecretaireForm" class="form-container">
+      <h3>Ajouter une Secrétaire</h3>
+      <form [formGroup]="secretaireForm" (ngSubmit)="addSecretaire()">
+        <div class="mb-3">
+          <input type="text" formControlName="name" class="form-control" placeholder="Nom de la secrétaire">
+        </div>
+        <div class="mb-3">
+          <input type="email" formControlName="email" class="form-control" placeholder="Email de la secrétaire">
+        </div>
+        <div class="mb-3">
+          <input type="text" formControlName="telephone" class="form-control" placeholder="Téléphone">
+        </div>
+        <div class="mb-3">
+          <datalist id="groupSanguin">
+            <option value="A_POS">A+</option>
+            <option value="A_NEG">A-</option>
+            <option value="B_POS">B+</option>
+            <option value="B_NEG">B-</option>
+            <option value="AB_POS">AB+</option>
+            <option value="AB_NEG">AB-</option>
+            <option value="O_POS">O+</option>
+            <option value="O_NEG">O-</option>
+          </datalist>
+        </div>
+        <button type="submit" class="btn btn-danger">Ajouter</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Section Centres de Collecte -->
+  <section id="centre" class="manage-section">
+    <h2>Gestion des Centres de Collecte</h2>
+    <button class="btn btn-danger" (click)="showAddCentreForm()">Ajouter un Centre</button>
+    <input type="text" id="searchCentre" class="form-control my-3" placeholder="Rechercher un centre" (keyup)="searchCentre($event)">
+    <div id="centre-list">
+      <!-- Liste des centres générée dynamiquement -->
+    </div>
+    <div *ngIf="showCentreForm" class="form-container">
+      <h3>Ajouter un Centre de Collecte</h3>
+      <form [formGroup]="centreForm" (ngSubmit)="addCentre()">
+        <div class="mb-3">
+          <input type="text" formControlName="nom" class="form-control" placeholder="Nom du centre">
+        </div>
+        <div class="mb-3">
+          <input type="text" formControlName="localisation" class="form-control" placeholder="Localisation">
+        </div>
+        <button type="submit" class="btn btn-danger">Ajouter</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Section Statistiques -->
+  <section id="stats" class="stats-section">
+    <h2>Statistiques des Donneurs</h2>
+    <select id="region" class="form-select mb-3" (change)="updateStats($event)">
+      <option value="all">Toutes les régions</option>
+      <option value="region1">Région 1</option>
+      <option value="region2">Région 2</option>
+      <!-- Ajouter d'autres régions ici -->
+    </select>
+    <div id="stats-region" class="row row-cols-1 row-cols-md-2 g-4">
+      <!-- Statistiques par région ou ville générées dynamiquement -->
+      <div class="col">
+        <div class="card">
+          <div class="card-body text-center">
+            <h5 class="card-title">Casablanca</h5>
+            <p class="card-text">Nombre de donneurs: 80</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card">
+          <div class="card-body text-center">
+            <h5 class="card-title">Rabat</h5>
+            <p class="card-text">Nombre de donneurs: 45</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
