@@ -1,0 +1,30 @@
+<div class="container">
+  <h2>Liste des Donneurs de Sang (Admin)</h2>
+
+  <table class="table table-bordered table-striped">
+    <button class="btn btn-green" (click)="addDonneur()">ajouter</button>
+
+    <thead>
+    <tr>
+      <th>Nom</th>
+      <th>Email</th>
+      <th>Téléphone</th>
+      <th>Groupe Sanguin</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let donneur of donneurs">
+      <td>{{ donneur.nom }}</td>
+      <td>{{ donneur.email }}</td>
+      <td>{{ donneur.telephone }}</td>
+      <td>{{ donneur.groupSanguin }}</td>
+      <td>
+        <!-- Actions comme modifier ou supprimer -->
+        <button class="btn btn-primary" (click)="modifierDonneur(donneur.id)">Modifier</button>
+        <button class="btn btn-danger" (click)="supprimerDonneur(donneur.id)">Supprimer</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
