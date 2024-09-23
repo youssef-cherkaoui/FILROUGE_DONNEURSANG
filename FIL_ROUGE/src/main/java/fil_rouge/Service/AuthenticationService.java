@@ -40,11 +40,11 @@ public class AuthenticationService {
                 .motdepasse(passwordEncoder.encode(request.getMotdepasse()))
                 .role(Role.ADMIN)
                 .build();
-        personneRepository.save(user);
+        var admin = personneRepository.save(user);
 
         var jwtToken = jwtService.generateToken(user);
         return  AuthenticationResponse.builder()
-                .token(jwtToken)
+                .token(jwtToken).user(admin)
                 .build();
     }
 
@@ -60,11 +60,11 @@ public class AuthenticationService {
         donneur.setRole(Role.valueOf("DONNEURSANG"));
 
         System.out.print(donneur);
-        donneurSangRepository.save(donneur);
+        var user = donneurSangRepository.save(donneur);
 
         var jwtToken = jwtService.generateToken(donneur);
         return AuthenticationResponse.builder()
-                .token(jwtToken)
+                .token(jwtToken).user(user)
                 .build();
     }
 
@@ -79,11 +79,11 @@ public class AuthenticationService {
         secretaire.setMotdepasse(passwordEncoder.encode(request.getMotdepasse()));
         secretaire.setRole(Role.valueOf("SECRETAIRE"));
 
-        secretaireRepository.save(secretaire);
+        var secretaire1 = secretaireRepository.save(secretaire);
 
         var jwtToken = jwtService.generateToken(secretaire);
         return AuthenticationResponse.builder()
-                .token(jwtToken)
+                .token(jwtToken).user(secretaire1)
                 .build();
 
     }
