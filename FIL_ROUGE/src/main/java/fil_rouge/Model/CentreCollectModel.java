@@ -20,7 +20,7 @@ public class CentreCollectModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nomCentre;
-
+    private String localisation;
 
 
 
