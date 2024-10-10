@@ -22,7 +22,14 @@ public class SecretaireServiceImpl implements SecretaireService{
     }
 
     @Override
+    public SecretaireModel getSecretaireById(Long id) {
+        return secretaireRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Secretaire non trouvé"));
+    }
+
+    @Override
     public List<SecretaireModel> getAllSecretaire() {
+
         return secretaireRepository.findAll();
     }
 
@@ -31,6 +38,22 @@ public class SecretaireServiceImpl implements SecretaireService{
     public void deleteSecretaire(Long id){
         secretaireRepository.deleteById(id);
     }
+
+    @Override
+    public SecretaireModel updateSecretaire(Long id, SecretaireModel secretaireModel) {
+        SecretaireModel existingSecretaire = secretaireRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Secretaire non trouvé"));
+
+        // Mise à jour des champs
+        existingSecretaire.setNom(secretaireModel.getNom());
+        existingSecretaire.setEmail(secretaireModel.getEmail());
+        existingSecretaire.setMotdepasse(secretaireModel.getMotdepasse());
+        existingSecretaire.setTelephone(secretaireModel.getTelephone());
+        existingSecretaire.setGroupSanguin(secretaireModel.getGroupSanguin());
+
+        return secretaireRepository.save(existingSecretaire);
+    }
+
 
 
 }
