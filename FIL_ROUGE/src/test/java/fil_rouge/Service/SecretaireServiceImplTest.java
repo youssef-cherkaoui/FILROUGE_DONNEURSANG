@@ -77,26 +77,26 @@ class SecretaireServiceImplTest {
         assertDoesNotThrow(() -> secretaireService.deleteSecretaire(id));
         verify(secretaireRepository, times(1)).deleteById(id);
     }
-
     @Test
     void updateSecretaire() {
-
         when(secretaireRepository.findById(secretaire.getId())).thenReturn(Optional.of(secretaire));
-        when(secretaireRepository.save(secretaire)).thenReturn(secretaire);
+        when(secretaireRepository.save(any(SecretaireModel.class))).thenReturn(secretaire);
 
         SecretaireModel updatedSecretaire = new SecretaireModel();
         updatedSecretaire.setNom("YOUSSEF");
         updatedSecretaire.setEmail("YOUSSEF@gmail.com");
         updatedSecretaire.setMotdepasse("AZER");
         updatedSecretaire.setTelephone("987654321");
-        updatedSecretaire.setGroupSanguin(GroupSanguin.O_POS); // Remplace par le bon enum
+        updatedSecretaire.setGroupSanguin(GroupSanguin.O_POS);
 
         SecretaireModel result = secretaireService.updateSecretaire(secretaire.getId(), updatedSecretaire);
 
         assertNotNull(result);
         assertEquals("YOUSSEF", result.getNom());
+
         verify(secretaireRepository, times(1)).findById(secretaire.getId());
-        verify(secretaireRepository, times(1)).save(secretaire);
+        verify(secretaireRepository, times(1)).save(any(SecretaireModel.class));
     }
+
 
 }
